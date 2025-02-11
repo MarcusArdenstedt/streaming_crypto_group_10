@@ -28,6 +28,7 @@ parso==0.8.4
 platformdirs==4.3.6
 prompt-toolkit==3.0.50
 psutil==6.1.1
+psycopg2-binary==2.9.10
 pure-eval==0.2.3
 pydantic==2.10.6
 pydantic-core==2.27.2
@@ -36,7 +37,6 @@ pygments==2.19.1
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 pytz==2025.1
-# pywin32==308
 pyzmq==26.2.1
 quixstreams==3.8.0
 referencing==0.36.2
