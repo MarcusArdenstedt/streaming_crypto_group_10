@@ -5,10 +5,10 @@ from functions.create_postgres_zink import create_postgres_sink
 def main():
     app = Application(
         broker_address="localhost:9092",
-        consumer_group="ETH_coin_group",
+        consumer_group="ADA_coin_group",
         auto_offset_reset="earliest",
     )
-    coin_topic = app.topic(name= "ETH_coins", value_deserializer="json")
+    coin_topic = app.topic(name= "ADA_coins", value_deserializer="json")
     
     sdf = app.dataframe(topic= coin_topic)
     
