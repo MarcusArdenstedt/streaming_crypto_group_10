@@ -4,7 +4,7 @@ import json
 from pprint import pprint
 from connect_api import get_latest_coin_data   
 
-TARGET_COIN = "ETH"
+TARGET_COIN = "ADA"
 
 def main():
     app = Application(broker_address="localhost:9092", consumer_group="ETH_coin_group")
