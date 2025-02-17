@@ -2,7 +2,7 @@ import sys
 import os
 
 sys.path.append(os.path.abspath("../streaming_crypto_group_10"))
-from common.constants import API_KEY
+from constants.constants import API_KEY
 from requests import Session, Timeout, TooManyRedirects
 import requests  
 import json
