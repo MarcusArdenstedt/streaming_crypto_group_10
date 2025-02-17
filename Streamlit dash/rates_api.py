@@ -6,7 +6,7 @@ import json
     
 # Get real-time exchange rates using the API
 
-def fetch_exchange_rates(base_currency="USD", rate ="USD"):
+def fetch_exchange_rates(base_currency="USD", rate ="SEK"):
     """ 从 API 获取最新汇率 , 默认查询的是以 USD 为基准的所有其他货币的汇率"""
     url = f"https://api.exchangerate-api.com/v4/latest/{base_currency}"
     
@@ -25,8 +25,9 @@ def fetch_exchange_rates(base_currency="USD", rate ="USD"):
     
 if __name__ == "__main__":
     exchange_rates = fetch_exchange_rates("USD") 
-    for currency, rate in exchange_rates.items():
-        print(f"{currency}: {rate}")
+    
+    # for currency, rate in exchange_rates.items():
+    #     print(f"{currency}: {rate}")
 
 
 
