@@ -1,4 +1,4 @@
-from common.constants import COINMARKETCAP_API
+from constants import COINMARKET_API
 from requests import Session, Timeout, TooManyRedirects
 import requests  
 import json
@@ -12,7 +12,7 @@ def get_latest_coin_data(target_symbol="BTC"):
     # 发送请求时的参数：传入的加密货币符号（如 "BTC"），返回的数据中包含以美元（USD）计价的信息。
     headers = {
         "Accepts": "application/json",       
-        "X-CMC_PRO_API_KEY": COINMARKETCAP_API,
+        "X-CMC_PRO_API_KEY": COINMARKET_API,
     }
 
     session = Session()
@@ -50,6 +50,8 @@ if __name__ == "__main__":
     exchange_rates = fetch_exchange_rates("USD")  # 获取基于 USD 的汇率
     for currency, rate in exchange_rates.items():
         print(f"{currency}: {rate}")
+
+
 
 
 
