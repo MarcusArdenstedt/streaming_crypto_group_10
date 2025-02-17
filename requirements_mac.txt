@@ -18,6 +18,7 @@ executing==2.2.0
 fonttools==4.56.0
 gitdb==4.0.12
 gitpython==3.1.44
+greenlet==3.1.1
 idna==3.10
 ipykernel==6.29.5
 ipython==8.32.0
@@ -67,6 +68,7 @@ rocksdict==0.3.25
 rpds-py==0.22.3
 six==1.17.0
 smmap==5.0.2
+sqlalchemy==2.0.38
 stack-data==0.6.3
 streamlit==1.42.0
 streamlit-autorefresh==1.0.1
