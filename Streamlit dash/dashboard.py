@@ -19,8 +19,7 @@ def load_data(query):
         df = pd.read_sql(query, conn)
         df = df.set_index("timestamp")
         return df
-    
-        
+           
     
     
 def main():
