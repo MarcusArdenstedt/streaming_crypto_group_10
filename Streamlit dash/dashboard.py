@@ -8,8 +8,9 @@ from sqlalchemy import create_engine
 import pandas as pd
 from constants.constants import (POSTGRES_DBNAME, POSTGRES_HOST, POSTGRES_PASSWORD, POSTGRES_PORT, POSTGRES_USER)
 from charts import line_chart
+from rates_api import fetch_exchange_rates
 
-currency = ["SEK", "NOK", "DKK", "EUR", "USD"]
+currency = ["SEK", "NOK", "DKK", "EUR", "USD", "ISK"]
 connection_string = f"postgresql+psycopg2://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DBNAME}"
 
 engine = create_engine(connection_string)
@@ -28,19 +29,31 @@ def main():
     st.markdown("# Streamed data for Cardano(ADA) from coinmarket")
     
 
-    st.selectbox("Choose currency to show", currency)
+    currency_code = st.selectbox("Choose currency to show", currency)
+    st.markdown(f"## Latest price in {currency_code} for Cardano")
     if currency == "SEK":
-        price_chart = line_chart(x =df.index, y= (df["price_usd"] * 10), title= "Price SEK")
+        currency_rate = fetch_exchange_rates(rate=currency_code)
+        price_chart = line_chart(x =df.index, y= (df["price_usd"] * currency_rate), title= f"Price {currency_code}")
         st.pyplot(price_chart)
-    elif currency == "NOK":
-        st.markdown("## Latest price in USD for Cardano")
-        price_chart = line_chart(x= df.index, y= df["price_usd"], title= "price NOK")
+    if currency == "NOK":
+        currency_rate = fetch_exchange_rates(rate=currency_code)
+        price_chart = line_chart(x =df.index, y= (df["price_usd"] * currency_rate), title= f"Price {currency_code}")
+        st.pyplot(price_chart)
+    if currency == "DKK":
+        currency_rate = fetch_exchange_rates(rate=currency_code)
+        price_chart = line_chart(x =df.index, y= (df["price_usd"] * currency_rate), title= f"Price {currency_code}")
+        st.pyplot(price_chart)
+    if currency == "EUR":
+        currency_rate = fetch_exchange_rates(rate=currency_code)
+        price_chart = line_chart(x =df.index, y= (df["price_usd"] * currency_rate), title= f"Price {currency_code}")
+        st.pyplot(price_chart)
+    if currency == "ISK":
+        currency_rate = fetch_exchange_rates(rate=currency_code)
+        price_chart = line_chart(x =df.index, y= (df["price_usd"] * currency_rate), title= f"Price {currency_code}")
         st.pyplot(price_chart)
 
    
-   
-    st.markdown("## Latest price in USD for Cardano")
-    price_chart = line_chart(x= df.index, y= df["price_usd"], title= "price USD")
+    price_chart = line_chart(x= df.index, y= df["price_usd"], title= f"price {currency_code}")
     st.pyplot(price_chart)
 
 
