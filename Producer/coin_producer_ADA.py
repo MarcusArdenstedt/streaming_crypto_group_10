@@ -4,11 +4,11 @@ import json
 from pprint import pprint
 from connect_api import get_latest_coin_data   
 
-TARGET_COIN = "ETH"
+TARGET_COIN = "ADA"
 
 def main():
-    app = Application(broker_address="localhost:9092", consumer_group="ETH_coin_group")
-    coins_topic = app.topic(name="ETH_coins", value_serializer="json")
+    app = Application(broker_address="localhost:9092", consumer_group="ADA_coin_group")
+    coins_topic = app.topic(name="ADA_coins", value_serializer="json")
 
     with app.get_producer() as producer:
         while True:
