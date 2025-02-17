@@ -31,30 +31,30 @@ def main():
 
     currency_code = st.selectbox("Choose currency to show", currency)
     st.markdown(f"## Latest price in {currency_code} for Cardano")
-    if currency == "SEK":
+    if currency_code == "SEK":
         currency_rate = fetch_exchange_rates(rate=currency_code)
         price_chart = line_chart(x =df.index, y= (df["price_usd"] * currency_rate), title= f"Price {currency_code}")
         st.pyplot(price_chart)
-    if currency == "NOK":
+    if currency_code == "NOK":
         currency_rate = fetch_exchange_rates(rate=currency_code)
         price_chart = line_chart(x =df.index, y= (df["price_usd"] * currency_rate), title= f"Price {currency_code}")
         st.pyplot(price_chart)
-    if currency == "DKK":
+    if currency_code == "DKK":
         currency_rate = fetch_exchange_rates(rate=currency_code)
         price_chart = line_chart(x =df.index, y= (df["price_usd"] * currency_rate), title= f"Price {currency_code}")
         st.pyplot(price_chart)
-    if currency == "EUR":
+    if currency_code == "EUR":
         currency_rate = fetch_exchange_rates(rate=currency_code)
         price_chart = line_chart(x =df.index, y= (df["price_usd"] * currency_rate), title= f"Price {currency_code}")
         st.pyplot(price_chart)
-    if currency == "ISK":
+    if currency_code == "ISK":
         currency_rate = fetch_exchange_rates(rate=currency_code)
         price_chart = line_chart(x =df.index, y= (df["price_usd"] * currency_rate), title= f"Price {currency_code}")
         st.pyplot(price_chart)
 
-   
-    price_chart = line_chart(x= df.index, y= df["price_usd"], title= f"price {currency_code}")
-    st.pyplot(price_chart)
+    if currency_rate == "USD":
+        price_chart = line_chart(x= df.index, y= df["price_usd"], title= f"price {currency_code}")
+        st.pyplot(price_chart)
 
 
 if __name__ == "__main__":
