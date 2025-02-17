@@ -30,7 +30,13 @@ def main():
 
     st.selectbox("Choose currency to show", currency)
     if currency == "SEK":
-       pass
+        price_chart = line_chart(x =df.index, y= (df["price_usd"] * 10), title= "Price SEK")
+        st.pyplot(price_chart)
+    elif currency == "NOK":
+        st.markdown("## Latest price in USD for Cardano")
+        price_chart = line_chart(x= df.index, y= df["price_usd"], title= "price NOK")
+        st.pyplot(price_chart)
+
    
    
     st.markdown("## Latest price in USD for Cardano")
