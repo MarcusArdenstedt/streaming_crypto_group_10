@@ -3,9 +3,7 @@ from streamlit_autorefresh import st_autorefresh
 from sqlalchemy import create_engine
 import pandas as pd
 from constants.constants import (POSTGRES_DBNAME, POSTGRES_HOST, POSTGRES_PASSWORD, POSTGRES_PORT, POSTGRES_USER)
-from charts import line_chart
 from rates_api import fetch_exchange_rates
-from millify import millify
 from print_crypto_info import crypto_info
 
 currency = ["SEK", "NOK", "DKK", "EUR", "USD", "ISK"]
@@ -19,11 +17,12 @@ def load_data(query):
         df = df.set_index("timestamp")
         return df
            
-    
+refresh = st_autorefresh(interval=30 *1000, limit= 100)
     
 def main():
     df = load_data("SELECT * FROM cardano;")
-
+    df = df.tail(10)
+    
     st.markdown("# Streamed data for Cardano(ADA) from coinmarket")
     
 
