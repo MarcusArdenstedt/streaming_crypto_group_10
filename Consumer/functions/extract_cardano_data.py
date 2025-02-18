@@ -2,6 +2,7 @@ def extract_cardano_data(message):
     quote = message["quote"]["USD"]
     return {
         "coin": message["name"],
+        "total_supply": message["total_supply"],
         "price_usd": quote["price"],
         "volume": quote["volume_24h"],
         "volume_change": quote["volume_change_24h"],
