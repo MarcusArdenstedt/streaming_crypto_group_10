@@ -1,7 +1,7 @@
 import sys
 import os
 
-sys.path.append(os.path.abspath("../streaming_crypto_group_10"))
+# sys.path.append(os.path.abspath("../streaming_crypto_group_10"))
 from constants.constants import (
     POSTGRES_DBNAME,
     POSTGRES_HOST,
