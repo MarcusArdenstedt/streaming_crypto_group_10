@@ -9,6 +9,7 @@ import pandas as pd
 from constants.constants import (POSTGRES_DBNAME, POSTGRES_HOST, POSTGRES_PASSWORD, POSTGRES_PORT, POSTGRES_USER)
 from charts import line_chart
 from rates_api import fetch_exchange_rates
+from millify import millify
 
 currency = ["SEK", "NOK", "DKK", "EUR", "USD", "ISK"]
 connection_string = f"postgresql+psycopg2://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DBNAME}"
@@ -52,9 +53,14 @@ def main():
         price_chart = line_chart(x =df.index, y= (df["price_usd"] * currency_rate), title= f"Price {currency_code}")
         st.pyplot(price_chart)
 
-    if currency_rate == "USD":
+    if currency_code == "USD":
         price_chart = line_chart(x= df.index, y= df["price_usd"], title= f"price {currency_code}")
         st.pyplot(price_chart)
+
+        column_1, column_2, column_3 = st.columns(3)
+        column_1.metric("Volume", millify(df["volume"].tail(1)), f"{millify(df['volume_change'].tail(1))}%", border=True,)
+        column_2.metric("price change 1h", f"{millify(df['price_usd'].tail(1), precision = 2)}{currency_code}", f"{millify(df['percent_change'].tail(1), precision = 2)}%", border=True)
+        column_3.metric("Price change 24h", f"{millify(df['price_usd'].tail(1), precision= 2)}{currency_code}", f"{millify(df['percent_change_24h'].tail(1))}%", border=True)
 
 
 if __name__ == "__main__":
