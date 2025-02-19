@@ -1,6 +1,7 @@
 import streamlit as st
 from millify import millify
 from charts import line_chart
+import matplotlib.pyplot as plt
 
 def crypto_info(df, currency_code, currency_rate=1):
     price_chart = line_chart(x= df.index, y= (df["price_usd"] * currency_rate), title= f"price {currency_code}")
@@ -27,3 +28,14 @@ def crypto_info(df, currency_code, currency_rate=1):
         f"{millify(df['total_supply'].tail(1), precision= 2)}",
         border=True)
     
+    cols = st.columns(2)
+    with cols[0]:
+        st.subheader("Volume Change Trend")
+        volume_chart = line_chart(x= df.index, y= (df["volume_change"] * currency_rate), title= f"price {currency_code}")
+        st.pyplot(volume_chart)
+    with cols[1]:
+        st.subheader("Percentage Change Trend")
+        percent_chart = line_chart(x=df.index, y=df["percent_change"], title="1h Percent Change (%)")
+        st.pyplot(percent_chart)
+
+
