@@ -19,7 +19,7 @@ def main():
     sdf = sdf.update(lambda row: print(row))
     
     
-    postgres_sink = create_postgres_sink()
+    postgres_sink = create_postgres_sink("cardano")
     sdf.sink(postgres_sink)
     
     app.run()
