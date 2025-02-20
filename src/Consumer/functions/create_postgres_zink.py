@@ -1,7 +1,3 @@
-import sys
-import os
-
-# sys.path.append(os.path.abspath("../streaming_crypto_group_10"))
 from constants.constants import (
     POSTGRES_DBNAME,
     POSTGRES_HOST,
@@ -11,14 +7,14 @@ from constants.constants import (
 )
 from quixstreams.sinks.community.postgresql import PostgreSQLSink
 
-def create_postgres_sink():
+def create_postgres_sink(table):
     sink = PostgreSQLSink(
         host = POSTGRES_HOST,
         port = POSTGRES_PORT,
         dbname = POSTGRES_DBNAME,
         user = POSTGRES_USER,
         password = POSTGRES_PASSWORD,
-        table_name = "cardano",
+        table_name = table,
         schema_auto_update = True
     )
 
