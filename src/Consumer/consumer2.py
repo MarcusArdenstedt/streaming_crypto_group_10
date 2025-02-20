@@ -17,7 +17,7 @@ def main():
     
     sdf = sdf.update(lambda row: print(row))
     
-    postgres_sink = create_postgres_sink("dot_data")
+    postgres_sink = create_postgres_sink("polkadot")
     sdf.sink(postgres_sink)
     
     app.run()

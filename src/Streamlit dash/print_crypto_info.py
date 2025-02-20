@@ -4,7 +4,7 @@ from charts import line_chart
 import matplotlib.pyplot as plt
 
 def crypto_info(df, currency_code, currency_rate=1):
-    price_chart = line_chart(x= df.index, y= (df["price_usd"] * currency_rate), title= f"price {currency_code}")
+    price_chart = line_chart(x= df.index, y= (df["price_usd"] * currency_rate), title= f"Price {currency_code}")
     st.pyplot(price_chart)
     column_1, column_2, column_3 = st.columns(3)
     column_4, column_5, column_6 = st.columns(3)
@@ -31,7 +31,7 @@ def crypto_info(df, currency_code, currency_rate=1):
     cols = st.columns(2)
     with cols[0]:
         st.subheader("Volume Change Trend")
-        volume_chart = line_chart(x= df.index, y= (df["volume_change"] * currency_rate), title= f"price {currency_code}")
+        volume_chart = line_chart(x= df.index, y= (df["volume_change"] * currency_rate), title= f"Price {currency_code}")
         st.pyplot(volume_chart)
     with cols[1]:
         st.subheader("Percentage Change Trend")
