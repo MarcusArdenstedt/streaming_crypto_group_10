@@ -5,6 +5,7 @@ import pandas as pd
 from constants.constants import (POSTGRES_DBNAME, POSTGRES_HOST, POSTGRES_PASSWORD, POSTGRES_PORT, POSTGRES_USER)
 from rates_api import fetch_exchange_rates
 from print_crypto_info import crypto_info
+from Consumer.functions.create_postgres_zink import create_postgres_sink
 
 currency = ["SEK", "NOK", "DKK", "EUR", "USD", "ISK"]
 connection_string = f"postgresql+psycopg2://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DBNAME}"
@@ -20,8 +21,16 @@ def load_data(query):
 refresh = st_autorefresh(interval=30 *1000, limit= 100)
     
 def main():
-    df = load_data("SELECT * FROM cardano;")
-    df = df.tail(10)
+    table = (st.selectbox("Choose crypto currency", ("cardano", "polkadot")))
+    
+    if table == "polkadot":
+        df = load_data("SELECT * FROM polkadot;")
+        df = df.tail(10)
+    
+    else:
+        df = load_data("SELECT * FROM cardano;")
+        df = df.tail(10)
+    
     
     st.markdown("# Streamed data for Cardano(ADA) from coinmarket")
     

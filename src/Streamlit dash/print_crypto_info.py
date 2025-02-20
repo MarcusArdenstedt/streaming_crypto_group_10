@@ -37,5 +37,3 @@ def crypto_info(df, currency_code, currency_rate=1):
         st.subheader("Percentage Change Trend")
         percent_chart = line_chart(x=df.index, y=df["percent_change"], title="1h Percent Change (%)")
         st.pyplot(percent_chart)
-
-
