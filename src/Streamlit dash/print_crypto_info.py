@@ -10,7 +10,7 @@ def crypto_info(df, currency_code, currency_rate=1):
     column_4, column_5, column_6 = st.columns(3)
     column_1.metric(
         "Volume", 
-        millify((df["volume"].tail(1) * currency_rate), precision= 2), 
+        f"{millify((df['volume'].tail(1) * currency_rate), precision= 2)}{currency_code}", 
         f"{millify(df['volume_change'].tail(1))}%", 
         border=True,)
     column_2.metric(
