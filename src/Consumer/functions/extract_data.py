@@ -1,4 +1,4 @@
-def extract_cardano_data(message):
+def extract_data(message):
     quote = message["quote"]["USD"]
     return {
         "coin": message["name"],

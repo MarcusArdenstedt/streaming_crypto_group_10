@@ -22,7 +22,7 @@ refresh = st_autorefresh(interval=30 *1000, limit= 100)
     
 def main():
     st.markdown("# Crypto currency Cardano and Polkadot")
-    st.markdown("## In this dashboard you can choose between two differents crypto to se how it change in real-time and choose which currency you want to see. The currency is allways update with the latest rate")
+    st.markdown("## In this dashboard you can choose between two differents crypto to see how it change in real-time and choose which currency you want to see. The currency is allways update with the latest rate")
     
     table = (st.selectbox("Select cryptocurrency", ("Cardano", "Polkadot")))
     
