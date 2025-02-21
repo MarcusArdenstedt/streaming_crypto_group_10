@@ -1,5 +1,5 @@
 from quixstreams import Application
-from functions.extract_dot_data import extract_dot_data
+from functions.extract_data import extract_data
 from functions.create_postgres_zink import create_postgres_sink
 
 def main():
@@ -13,7 +13,7 @@ def main():
     sdf = app.dataframe(topic=coin_topic)
     
     # Transformation
-    sdf = sdf.apply(extract_dot_data)
+    sdf = sdf.apply(extract_data)
     
     sdf = sdf.update(lambda row: print(row))
     
