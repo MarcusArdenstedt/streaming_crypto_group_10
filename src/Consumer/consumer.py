@@ -1,5 +1,5 @@
 from quixstreams import Application
-from functions.extract_cardano_data import extract_cardano_data
+from functions.extract_data import extract_data
 from functions.create_postgres_zink import create_postgres_sink
 
 def main():
@@ -14,7 +14,7 @@ def main():
     
     
     # transformation 
-    sdf = sdf.apply(extract_cardano_data)
+    sdf = sdf.apply(extract_data)
     
     sdf = sdf.update(lambda row: print(row))
     
