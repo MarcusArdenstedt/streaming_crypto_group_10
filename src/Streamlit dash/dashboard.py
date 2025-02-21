@@ -41,27 +41,9 @@ def main():
     currency_code = st.selectbox("Select currency", currency)
     st.markdown(f"### Price change over time  for {table}")
     
+    currency_rate = fetch_exchange_rates(rate=currency_code)
+    crypto_info(df, currency_code, currency_rate)
     
-    
-    if currency_code == "SEK":
-        currency_rate = fetch_exchange_rates(rate=currency_code)
-        crypto_info(df, currency_code, currency_rate)
-    if currency_code == "NOK":
-        currency_rate = fetch_exchange_rates(rate=currency_code)
-        crypto_info(df, currency_code, currency_rate)
-    if currency_code == "DKK":
-        currency_rate = fetch_exchange_rates(rate=currency_code)
-        crypto_info(df, currency_code, currency_rate)
-    if currency_code == "EUR":
-        currency_rate = fetch_exchange_rates(rate=currency_code)
-        crypto_info(df, currency_code, currency_rate)
-    if currency_code == "ISK":
-        currency_rate = fetch_exchange_rates(rate=currency_code)
-        crypto_info(df, currency_code, currency_rate)
-        
-
-    if currency_code == "USD":
-        crypto_info(df, currency_code)
 
 
 if __name__ == "__main__":
