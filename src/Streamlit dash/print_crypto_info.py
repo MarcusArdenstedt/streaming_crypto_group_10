@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 def crypto_info(df, currency_code, currency_rate=1):
     price_chart = line_chart(x= df.index, y= (df["price_usd"] * currency_rate), title= f"Price {currency_code}")
     st.pyplot(price_chart)
-    column_1, column_2, column_3 = st.columns(3)
-    column_4, column_5, column_6 = st.columns(3)
+    column_1, column_2 = st.columns(2)
+    column_3, column_4 = st.columns(2)
     column_1.metric(
         "Volume", 
         f"{millify((df['volume'].tail(1) * currency_rate), precision= 2)} {currency_code}", 
