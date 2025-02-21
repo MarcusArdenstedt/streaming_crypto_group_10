@@ -21,23 +21,28 @@ def load_data(query):
 refresh = st_autorefresh(interval=30 *1000, limit= 100)
     
 def main():
-    table = (st.selectbox("Choose crypto currency", ("Cardano", "Polkadot")))
+    st.markdown("# Crypto currency Cardano and Polkadot")
+    st.markdown("## In this dashboard you can choose between two differents crypto to se how it change in real-time and choose which currency you want to see. The currency is allways update with the latest rate")
+    
+    table = (st.selectbox("Select cryptocurrency", ("Cardano", "Polkadot")))
     
     if table == "Polkadot":
         df = load_data("SELECT * FROM polkadot;")
         df = df.tail(15)
         
-        st.markdown("# Streaming data for Polkadot(DOT) from coinmarket")
+        st.markdown("### Streaming data for Polkadot(DOT) from coinmarket")
     
     else:
         df = load_data("SELECT * FROM cardano;")
         df = df.tail(15)
     
-        st.markdown("# Streaming data for Cardano(ADA) from coinmarket")
+        st.markdown("### Streaming data for Cardano(ADA) from coinmarket")
     
-
-    currency_code = st.selectbox("Choose currency to show", currency)
-    st.markdown(f"## Latest price in {currency_code} for {table}")
+    currency_code = st.selectbox("Select currency", currency)
+    st.markdown(f"### Price change over time  for {table}")
+    
+    
+    
     if currency_code == "SEK":
         currency_rate = fetch_exchange_rates(rate=currency_code)
         crypto_info(df, currency_code, currency_rate)

@@ -10,17 +10,17 @@ def crypto_info(df, currency_code, currency_rate=1):
     column_4, column_5, column_6 = st.columns(3)
     column_1.metric(
         "Volume", 
-        f"{millify((df['volume'].tail(1) * currency_rate), precision= 2)}{currency_code}", 
+        f"{millify((df['volume'].tail(1) * currency_rate), precision= 2)} {currency_code}", 
         f"{millify(df['volume_change'].tail(1))}%", 
         border=True,)
     column_2.metric(
         "price change 1h", 
-        f"{millify((df['price_usd'].tail(1) * currency_rate), precision = 2)}{currency_code}", 
+        f"{millify((df['price_usd'].tail(1) * currency_rate), precision = 2)} {currency_code}", 
         f"{millify(df['percent_change'].tail(1), precision = 2)}%",
         border=True)
     column_3.metric(
         "Price change 24h", 
-        f"{millify((df['price_usd'].tail(1) * currency_rate), precision= 2)}{currency_code}", 
+        f"{millify((df['price_usd'].tail(1) * currency_rate), precision= 2)} {currency_code}", 
         f"{millify(df['percent_change_24h'].tail(1))}%",
         border=True)
     column_4.metric(
