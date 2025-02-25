@@ -3,9 +3,16 @@ from millify import millify
 from charts import line_chart
 import matplotlib.pyplot as plt
 
+
+
 def crypto_info(df, currency_code, currency_rate=1):
     price_chart = line_chart(x= df.index, y= (df["price_usd"] * currency_rate), title= f"Price {currency_code}")
     st.pyplot(price_chart)
+    st.markdown(
+        """Kpi value thats showing how the volume has changed in the past hour,
+        how the price has changed in the past hour and day,
+        as well as how much the total supply has changed"""
+    )
     column_1, column_2 = st.columns(2)
     column_3, column_4 = st.columns(2)
     column_1.metric(
@@ -25,7 +32,7 @@ def crypto_info(df, currency_code, currency_rate=1):
         border=True)
     column_4.metric(
         "Total supply", 
-        f"{millify(df['total_supply'].tail(1), precision= 2)}",
+        f"{millify(df['total_supply'].dropna().tail(1), precision= 2)}",
         border=True)
     
     cols = st.columns(2)
