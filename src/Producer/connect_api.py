@@ -1,10 +1,5 @@
-import sys
-import os
-
-# sys.path.append(os.path.abspath("../streaming_crypto_group_10"))
 from constants.constants import API_KEY
-from requests import Session, Timeout, TooManyRedirects
-import requests  
+from requests import Session, Timeout, TooManyRedirects  
 import json
 
 API_URL = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest"

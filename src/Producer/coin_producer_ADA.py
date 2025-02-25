@@ -1,7 +1,5 @@
 import time
 from quixstreams import Application  
-import json
-from pprint import pprint
 from connect_api import get_latest_coin_data   
 
 TARGET_COIN = "ADA"
